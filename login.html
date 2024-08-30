@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 75px;
+            background-image: url('conbag.jpg');
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            position: relative;
+            text-align: center; /* Center text content */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        .captcha-container {
+            margin-bottom: 15px;
+        }
+        .captcha-image {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 90px; /* Adjust the size as needed */
+            height: 30px; /* Adjust the size as needed */
+        }
+        .form-group button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .form-group button.active {
+            background-color: #00cc00; /* Change to green */
+        }
+        .hidden {
+            display: none;
+        }
+        .logo {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            width: 20px; /* Adjust the size as needed */
+            height: 20px; /* Adjust the size as needed */
+            border-radius: 40%; /* Make it circular */
+            cursor: pointer; /* Make cursor change to pointer on hover */
+        }
+        .login-button-wrapper {
+            text-align: center;
+        }
+        .password-container {
+            position: relative;
+        }
+        #togglePassword {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+        .loading {
+            display: none;
+            margin-top: 10px;
+        }
+        .loading img {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="refrash.jpg" alt="Logo" class="logo" onclick="resetLoginForm()">
+        <h2><b>Login</b></h2>
+        <form action="#" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <label for="Phone num"><b>Phone Number</b></label>
+                <input type="text" id="Phone num" name="Phone num" required>
+            </div>
+            <div class="form-group">
+                <label for="password"><b>Password</b></label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <i class="fas fa-eye-slash" id="togglePassword"></i>
+                </div>
+            </div>
+            <div class="captcha-container">
+                <label for="captcha"><b>Captcha</b></label><br>
+                <!-- Your captcha code here -->
+                <img src="captcha.jpg" alt="Captcha" class="captcha-image"><br>
+                <input type="text" id="captcha" name="captcha" required>
+            </div>
+            <div class="form-group">
+                <input type="hidden" id="login-as" name="login-as" value="">
+            </div>
+            <div class="form-group login-button-wrapper">
+                <a href="user.html">
+                    <button type="button"><b>Login</b></button>
+                </a>
+                
+            </div>
+            <div class="forgot-password">
+                <a href="forget password page.html">Forgot Password?</a>
+                <br>
+                <br>
+
+                <a href="creat_account.html">Creat Account/Sign Up</a>
+            </div>
+            <div class="loading" id="loading">
+                <img src="loding.gif" alt="Loading">
+                <p>Logging in...</p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function resetLoginForm() {
+            location.reload();
+        }
+
+        function login() {
+            // Show loading animation and text
+            document.getElementById('loading').style.display = 'block';
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+    }, 2500); 
+}
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginButtons = document.querySelectorAll('.login-btn');
+            const loginAsInput = document.getElementById('login-as');
+            
+            loginButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    loginButtons.forEach(btn => {
+                        if (btn !== this) {
+                            btn.classList.add('hidden');
+                        }
+                    });
+                    this.classList.add('active');
+                    loginAsInput.value = this.value;
+                });
+            });
+
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#password');
+
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Popup Message Styling */
+        #popup {
+            visibility: hidden;
+            width: 250px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+            padding: 15px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            font-size: 17px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Forgot Password Link */
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 10px;
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* Sign In Button */
+        .signin-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signin-button {
+            background-color: #007bff;
+        }
+
+        .signin-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Removing default styles from anchor tag */
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Account</h2>
+        <form id="accountForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required>
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        
+        <!-- Centered Sign In Button -->
+        <div class="signin-container">
+            <a href="login.html">
+                <button class="signin-button">Sign In</button>
+            </a>
+        </div>
+    </div>
+
+    <!-- Popup Message -->
+    <div id="popup">Account Created Successfully</div>
+
+    <script>
+        document.getElementById('accountForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Show the popup
+            var popup = document.getElementById('popup');
+            popup.style.visibility = 'visible';
+
+            // Hide the popup after 3 seconds
+            setTimeout(function() {
+                popup.style.visibility = 'hidden';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

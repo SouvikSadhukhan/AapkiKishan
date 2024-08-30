@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Warehouse</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); /* Replace with the actual path of your background image */
+            background-size: cover;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #000;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: #000;
+        }
+
+        input[type="text"], 
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button[type="button"], 
+        button[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button[type="button"]:hover, 
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .date-display {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book a Warehouse</h1>
+        <form>
+            <label for="vegetable">Type of Vegetable:</label>
+            <input type="text" id="vegetable" name="vegetable" value="Potato">
+
+            <label for="packets">Number of Packets:</label>
+            <input type="number" id="packets" name="packets" placeholder="Enter number of packets">
+
+            <label for="date">Pick-Up Date:</label>
+            <button type="button" id="date">SELECT DATE</button>
+            <p class="date-display">Mon Aug 19 2024</p>
+
+            <button type="submit" class="submit-btn">BOOK WAREHOUSE</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SOUVIK Project</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
+    <style>
+        /* Add CSS for the dropdown menu */
+        .dropdown-menu {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 40px; /* Adjust based on your layout */
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            width: 200px; /* Adjust width as needed */
+            z-index: 1000; /* Ensure it appears above other content */
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Chat Popup Styles */
+        .chat-popup {
+            display: none; /* Hidden by default */
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 1px solid #ddd;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px 10px 0 0;
+            width: 300px; /* Adjust width as needed */
+            background-color: #fff;
+            z-index: 1000;
+        }
+
+        .chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-chat {
+            cursor: pointer;
+        }
+
+        .chat-body {
+            padding: 10px;
+            max-height: 300px; /* Adjust height as needed */
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .chat-footer {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chat-footer input {
+            width: 60%;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .chat-footer button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .chat-footer .attach-file {
+            background-color: #ddd;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .chat-footer .attach-file input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                AAP<span>কি</span>किशन
+            </div>             
+            <div class="menu">
+                <a href="index.html">Home</a>
+                <a href="price_news.html">Price News</a>
+                <a href="#">Agri- News</a>
+                <a href="#">Storage Near Me</a>
+            </div>
+           
+            <div class="social-media">    
+                <a href="https://wa.me/+919641837186" target="   blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" id="chatIcon">
+                    <i class="fas fa-headset"></i>
+                </a>
+                <a href="https://www.google.com/maps" target="  blank">
+                    <i class="fas fa-map-marker-alt"></i>
+                </a>
+            </div> 
+            <div class="icon">
+                <i class="fas fa-user" id="userIcon"></i>
+            </div>      
+        </nav>
+
+        <section class="h-text">
+            <h1>Welcome to Aapকিकिशन</h1>
+            <div class="option">
+                <a href="book.html">Book now</a>
+                <a href="#">Download here</a>
+                <a href="#">Connect with us</a>
+            </div>
+        </section>    
+    </header>
+
+    <section class="member">
+        <div class="member-info" data-aos="zoom-in-up" data-aos-offset="100" data-aos-delay="100">
+            <h1>Our <span>Information</span></h1>
+            <p>About Us</p>
+        </div>
+
+        <div class="member-card" data-aos="zoom-in-up" data-aos-offset="100" data-aos-delay="300">
+            <img src="logo.png" width="100" alt="Logo">
+            <p>
+                APPকিकिशन is a mobile app and web application for market rate of agricultural crops, vegetables of land area and collection of baseline land based data to ensure right benefits reach the right beneficiaries and there is transparency in the system. It is a user-friendly platform that enables valuable insights for improved market rate and evidence-based monitoring. AAPকিकिशন platform will help the users to view the consolidated and comprehensive information pertaining to farmer’s agriculture market rate across the country.
+            </p>
+            <span>Member since 2024</span>
+            <a href="link1.html"><img src="icon1.png" width="100"></a>
+            <a href="link2.html"><img src="icon2.png" width="100"></a>
+            <a href="https://wa.me/+919641837186"><img src="icon3.png" width="100"></a>
+            <a href="link4.html"><img src="icon4.png" width="100"></a>
+        </div>
+    </section>
+
+    <!-- Dropdown Menu -->
+    <div id="dropdownMenu" class="dropdown-menu">
+        <a href="profile.html">My Profile</a>
+        <a href="#">Cart</a>
+        <a href="#">Order</a>
+        <a href="index.html">Logout</a>
+    </div>
+
+    <!-- Live Chat Support Popup -->
+    <div id="chatPopup" class="chat-popup">
+        <div class="chat-header">
+            <h2>Live Chat Support</h2>
+            <span id="closeChat" class="close-chat">&times;</span>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <!-- Chat history will be dynamically added here -->
+        </div>
+        <div class="chat-footer">
+            <button class="attach-file">
+                <i class="fas fa-paperclip"></i> Attach File
+                <input type="file" id="fileInput" />
+            </button>
+            <input type="text" placeholder="Type your message here..." id="messageInput" />
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle dropdown menu visibility
+        document.getElementById('userIcon').addEventListener('click', function() {
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            if (dropdownMenu.style.display === 'none' || dropdownMenu.style.display === '') {
+                dropdownMenu.style.display = 'block';
+            } else {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function(event) {
+            var userIcon = document.getElementById('userIcon');
+            var dropdownMenu = document.getElementById('dropdownMenu');
+            if (!userIcon.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+
+        // JavaScript to handle live chat popup
+        document.getElementById('chatIcon').addEventListener('click', function() {
+            var chatPopup = document.getElementById('chatPopup');
+            chatPopup.style.display = 'block';
+        });
+
+        document.getElementById('closeChat').addEventListener('click', function() {
+            var chatPopup = document.getElementById('chatPopup');
+            chatPopup.style.display = 'none';
+        });
+
+        document.addEventListener('click', function(event) {
+            var chatPopup = document.getElementById('chatPopup');
+            if (!chatPopup.contains(event.target) && !document.getElementById('chatIcon').contains(event.target)) {
+                chatPopup.style.display = 'none';
+            }
+        });
+
+        // JavaScript to handle chat messages and file attachment
+        document.getElementById('sendButton').addEventListener('click', function() {
+            var messageInput = document.getElementById('messageInput');
+            var chatBody = document.getElementById('chatBody');
+            var message = messageInput.value;
+            if (message.trim() !== '') {
+                var messageElement = document.createElement('p');
+                messageElement.textContent = message;
+                chatBody.appendChild(messageElement);
+                messageInput.value = ''; // Clear the input field
+                chatBody.scrollTop = chatBody.scrollHeight; // Scroll to the bottom
+            }
+        });
+
+        document.querySelector('.attach-file').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+    </script>
+</body>
+</html>

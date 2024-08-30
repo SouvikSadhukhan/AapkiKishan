@@ -1,0 +1,163 @@
+*{padding: 0; margin:0; box-sizing: border-box;}
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+body {
+    font-family: Arial, sans-serif;
+}
+
+.language-changer {
+    margin: 20px;
+}
+
+#content p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+}
+header{
+    width: 100vw;
+    height: 90vh;
+    background:linear-gradient(rgba(107, 107, 107, 0.8),rgba(0,0,0,0.8)), 
+                url("background.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: fixed;
+    position: relative;
+}
+nav{
+    width: 100%;
+    height: 80px;
+    background: rgb(238, 238, 238);
+    color: rgb(10, 10, 10);
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    padding: 0px 80px;
+    position: fixed;
+    top: 0;
+    background:white;
+	z-index: 1;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+.logo{
+    font-family: sans-serif;
+    font-size: 1.5em;
+}
+.logo span{
+    color: #f66c09;
+}
+.language-changer select {
+    padding: 5px;
+    font-size: 16px;
+}
+.menu a{
+    text-decoration: none;
+    color: black;
+    padding: 10px 15px;
+    font-family: sans-serif;
+    font-size: 18px;
+    justify-content: space-between;
+}
+.menu a:hover{
+    color: #e74c3c;
+}
+.menu a .icon {
+    margin-right: 20px;
+}    
+.social-media i{
+    font-size: 25px; 
+    padding: 10px 10px;
+    color:black#e74c3c;
+    transition: 0.3s ease;
+}
+.social-media i:hover{
+    color: #e74c3c;
+}
+.icon a{
+    text-decoration: none;
+    background: #e74c3c;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    margin-right: 15px;
+}
+.icon a:hover{
+	background: transparent;
+	border:1px solid #e74c3c;
+	color: black;
+	transition: 0.4s ease;
+}
+.h-text{
+    color: white;
+    max-width: 700px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.h-text h1{
+    font-family: sans-serif;
+    font-size: 3em;
+    line-height: 2em;
+}
+
+.option a{
+    text-decoration: none;
+    color: rgb(240, 232, 232);
+    padding: 10px 15px;
+    font-family: sans-serif;
+    font-size: 20px;
+    justify-content: space-between;
+    position: relative;
+    text-decoration: none;
+    background: #07f31fb2;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+.option a:hover{
+        color: #e74c3c;
+}
+.option a button{
+    width: 30%;
+    background: #f16018;
+    color: white;
+    padding: 15px;
+    border: 10px;
+    outline: 10px;
+    border-radius: 6px;
+    font-size: 20px;
+    margin-top: 30px;
+}    
+.member{
+    width: 100%;
+    padding: 5px 10px;
+    font-family: sans-serif;
+}
+.member-info{
+    text-align: center;
+}
+.member-info h1{
+    font-size:1.5em;
+}
+.member-info h1 span{
+    color: #f16018;
+}
+.member-card{
+    text-align: center;
+    padding-top: 50px;
+    width: 50;
+    margin: auto;
+}
+.member-card p{
+    margin:20px 0px;
+    line-height: 2em;
+}
+
+.member-card img{
+    border-radius: 50%;
+}

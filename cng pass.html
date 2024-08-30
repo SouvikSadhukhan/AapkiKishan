@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('allbag.webp');
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            border: 1px solid rgb(14, 1, 21);
+            border-radius: 95px;
+            background-image: url('conbag.jpg');
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat;
+            text-align: center; /* Center text content */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: center; /* Center form labels and inputs */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: calc(100% - 26px); /* Adjusted for the width of the eye icon */
+            padding: 8px;
+            border: 1px solid hwb(0 0% 95%);
+            border-radius: 3px;
+            margin: 0 auto; /* Center horizontally */
+        }
+
+        .password-container {
+            position: relative;
+            display: inline-block; /* Prevent line break */
+            text-align: left; /* Align text to the left */
+        }
+
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: -20px; /* Adjusted right value */
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .change_password-button-wrapper {
+            text-align: center;
+        }
+
+        /* Button styles */
+        .change_password-button {
+            padding: 10px 15px;
+            background-color: #007bff; /* Blue color */
+            color: hsl(200, 18%, 97%);
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .change_password-button:hover {
+            background-color: rgb(40, 147, 101); /* Darker blue on hover */
+        }
+
+        .change_password-button.clicked {
+            background-color: #00cc00; /* Green color when clicked */
+        }
+
+        /* Popup styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: hwb(0 97% 3%);
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Change Password</h2>
+        <form action="#" method="post" onsubmit="return false;">
+            <div class="form-group">
+                <label for="old_password"><b>Current Password</b></label>
+                <div class="password-container">
+                    <input type="password" id="old_password" name="old_password" required>
+                    <i class="fas fa-eye-slash toggle-password" data-target="old_password"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="new_password"><b>New Password</b></label>
+                <div class="password-container">
+                    <input type="password" id="new_password" name="new_password" required>
+                    <i class="fas fa-eye-slash toggle-password" data-target="new_password"></i>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password"><b>Confirm Password</b></label>
+                <div class="password-container">
+                    <input type="password" id="confirm_password" name="confirm_password" required>
+                    <i class="fas fa-eye-slash toggle-password" data-target="confirm_password"></i>
+                </div>
+            </div>
+            <div class="form-group change_password-button-wrapper">
+                <button type="submit" class="change_password-button" onclick="changePassword()"><b>Change Password</b></button>
+            </div>
+            <div class="forgot-password">
+                <a href="forget password page.html"><b>Forgot Password?</b></a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Popup for success and error messages -->
+    <div id="popup" class="popup" style="display: none;"></div>
+
+    <script>
+        // Declaring current password
+        const currentPassword = 'currentPassword';
+
+        const togglePasswords = document.querySelectorAll('.toggle-password');
+
+        togglePasswords.forEach(function(togglePassword) {
+            togglePassword.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetInput = document.getElementById(targetId);
+                const type = targetInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                targetInput.setAttribute('type', type);
+                this.classList.toggle('fa-eye-slash');
+                this.classList.toggle('fa-eye');
+            });
+        });
+
+        // Function to handle button click
+        function changePassword() {
+            const oldPassword = document.getElementById('old_password').value;
+            const newPassword = document.getElementById('new_password').value;
+            const confirmPassword = document.getElementById('confirm_password').value;
+
+            if (oldPassword !== currentPassword) {
+                displayPopup('Invalid old password!');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                displayPopup('New password not matched!');
+                return;
+            }
+
+            // Your password change logic goes here
+
+            // Display success message
+            displayPopup('Password changed successfully!');
+
+            // Delay redirection after 5 seconds
+            setTimeout(function() {
+                window.location.href = 'stu home.html';
+            }, 5000);
+        }
+
+        // Function to display popup
+        function displayPopup(message) {
+            const popup = document.getElementById('popup');
+            popup.textContent = message;
+            popup.style.display = 'block';
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 3000); // Display for 3 seconds
+        }
+    </script>
+</body>
+</html>
